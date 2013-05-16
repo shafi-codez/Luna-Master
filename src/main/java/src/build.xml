@@ -1,0 +1,15 @@
+<!-- Ant build script for compiling and running the AWS Java SDK console application sample.
+     Don't forget to fill in your AWS access credentials in AwsCredentials.properties
+     before trying to run it.  -->
+<project name="leerCola" default="run" basedir=".">
+    <path id="aws.java.sdk.classpath">
+        <fileset dir="${basedir}/../aws-java-sdk-1.3.2/third-party" includes="**/*.jar"/>
+        <fileset dir="${basedir}/../aws-java-sdk-1.3.2/lib" includes="**/*.jar"/>
+        <pathelement location="."/>
+    </path>
+
+    <target name="run">
+        <javac srcdir="." destdir="." classpathref="aws.java.sdk.classpath"/>
+        <java classname="leerCola" classpathref="aws.java.sdk.classpath" fork="true"/>
+    </target>
+</project>
